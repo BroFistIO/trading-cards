@@ -9,6 +9,22 @@
 		font-family: myFont;
 		src: url(font.woff);
 	}
+	.whatTheFuck {
+		width: 400px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.whatTheFuck h1 {
+		font-family: myFont;
+		color: purple;
+		text-shadow: 2px 2px black;
+		letter-spacing: 2px;
+		margin: 5px 0 10px 0;
+	}
+	.whatTheFuck p {
+		font-family: Arial;
+		font-size: 16px; line-height: 1.2;
+	}
 	#cardContainer {
 		font-family: myFont;
 		width: 400px; height: 540px;
@@ -121,6 +137,9 @@ function select(id) {
 }
 
 </script>
+	<div class="whatTheFuck">
+		<h1>Trading Cards Demo</h1>
+	</div>
 	<div id="cardContainer">
 		<div class="cardHeader">
 			<h1 id="cardTitle"></h1>
@@ -136,6 +155,15 @@ function select(id) {
 		<button onClick="select('00002')">Ugandan Knuckles</button>
 		<button onClick="select('00003')">PewDiePie's Chair</button>
 		<button onClick="select('00004')">Edgar</button>
+	</div>
+	<div class="whatTheFuck">
+		<p>This demo shows how to dynamically load different memes into the trading card's template. 
+		Click on the buttons above to see how it works!<br><br>
+		Eventually these are going to be actual OWNABLE trading cards with LIMITED supply on the Ethereum blockchain as 
+		ERC721 tokens.<br><br>
+		I have absolutely nothing better to do with my life... so if you're like me, check out the
+		<a href="https://github.com/BroFistIO/Trading-Cards" target="_blank">source code</a> and talk to the rest 
+		of the team in our <a href="https://discord.gg/qufg63c"target="_blank">Discord</a></p>
 	</div>
 </body>
 </html>

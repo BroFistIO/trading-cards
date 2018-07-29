@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	@font-face {
+		font-family: myFont;
+		src: url(font.woff);
+	}
+	#cardContainer {
+		font-family: myFont;
+		width: 400px; height: 540px;
+		background-image: url(Cards/Card-Front-Transparency.png);
+		background-repeat: no-repeat;
+		background-position: top left;
+		position: relative;
+	}
+	.cardHeader {
+		width: 320px; 
+		height: 80px;
+		margin: 0 auto;
+		text-align: center;
+		position: absolute;
+		top: 38px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.cardTitle {
+		color: white;
+		text-shadow: 2px 2px black;
+		letter-spacing: 2px;
+		vertical-align: middle;
+		line-height: 80px; /* Container's height */
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+	}
+	.cardImage {
+		background-image: url(Memes/320x300/00001.jpg);
+		background-repeat: no-repeat;
+		background-position: top left;
+		width: 320px;
+		height: 300px;
+		margin: 0 auto;
+		text-align: center;
+		position: absolute;
+		top: 135px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+	.cardDescription {
+		width: 320px; 
+		height: 80px;
+		margin: 0 auto;
+		text-align: left;
+		position: absolute;
+		top: 450px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.cardDescription p {
+		font-size: 18px; 
+		letter-spacing: 1px;
+		color: white;
+		padding-right: 110px;
+	}
+	</style>
+</head>
+<body>
+	<div id="cardContainer">
+		<div class="cardHeader">
+			<h1 class="cardTitle">Boar Vessel</h1>
+		</div>
+		<div class="cardImage">
+		</div>
+		<div class="cardDescription">
+			<p>600-500 BC, Etruscan, ceramic!</p>
+		</div>
+	</div>
+</body>
+</html>

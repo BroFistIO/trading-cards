@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-	<title>Demo</title>
+	<title>Trading Cards Demo</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style>
@@ -9,23 +9,19 @@
 		font-family: myFont;
 		src: url(font.woff);
 	}
+	
 	.whatTheFuck {
 		width: 400px;
 		margin: 0 auto;
 		text-align: center;
 	}
-	.whatTheFuck h1 {
-		font-family: myFont;
-		color: purple;
-		text-shadow: 2px 2px black;
-		letter-spacing: 2px;
-		margin: 5px 0 10px 0;
-	}
+	
 	.whatTheFuck p {
 		font-family: Arial;
 		font-size: 16px; line-height: 1.2;
 	}
-	#cardContainer {
+	
+	.cardFront {
 		font-family: myFont;
 		width: 400px; height: 540px;
 		background-image: url(Cards/Card-Front-Transparency.png);
@@ -34,6 +30,17 @@
 		position: relative;
 		margin: 0 auto;
 	}
+	
+	.cardBack {
+		font-family: myFont;
+		width: 400px; height: 540px;
+		background-image: url(Cards/Card-Back.jpg);
+		background-repeat: no-repeat;
+		background-position: top left;
+		position: relative;
+		margin: 0 auto;
+	}
+	
 	.cardHeader {
 		width: 320px; 
 		height: 80px;
@@ -45,6 +52,7 @@
 		right: 0;
 		bottom: 0;
 	}
+	
 	#cardTitle {
 		color: white;
 		text-shadow: 2px 2px black;
@@ -58,6 +66,7 @@
 		bottom: 0;
 		margin: auto;
 	}
+	
 	#cardImage {
 		background-repeat: no-repeat;
 		background-position: top left;
@@ -72,6 +81,7 @@
 		bottom: 0;
 		z-index: -1;
 	}
+	
 	.cardDescriptionContainer {
 		width: 320px; 
 		height: 80px;
@@ -83,27 +93,93 @@
 		right: 0;
 		bottom: 0;
 	}
+	
 	.cardDescriptionContainer p {
-		font-size: 18px; 
+		font-size: 20px; 
 		letter-spacing: 1px;
 		color: white;
 		padding-right: 110px;
 	}
+	
 	#linksContainer {
-	margin-top: 5px;
 		text-align: center;
 	}
-	#linksContainer a {
-		color: black;
+	
+	.card, .info {
+		float: left;
+	}
+	
+	.info {
+		height: 540px;
+		padding: 0 0 0 10px;
+		margin: 0 0 0 10px;
+	}
+
+	
+	/*	
+	Thank you: 
+	https://codepen.io/edeesims/pen/iGDzk 
+	https://davidwalsh.name/css-flip 
+	*/
+	.card {
+		width: 400px;
+		height: 540px;
+		margin: 0 auto;
+		perspective: 2000px;
+	}
+	
+	.cardContainer {
+		position: relative;
+		transition: transform 1s;
+		transform-style: preserve-3d;
+	}
+	
+	.card:hover .cardContainer {
+		transform: rotateY( 180deg ) ;
+		transition: transform 0.5s;
+	}
+	
+	.cardFront,
+	.cardBack {
+		position: absolute;
+		top: 0; left: 0;
+		backface-visibility: hidden;
+	}
+	
+	.cardBack {
+		transform: rotateY( 180deg );
+	}
+	
+	button {
+		background-color: purple;
+		border: 0;
+		cursor: pointer;
+		color: white;
+		font-family: Arial;
+		font-size: 12px;
+		font-weight: bold;
+		padding: 7px 7px;
 		text-decoration: none;
 	}
-	#linksContainer a:hover {
-		border-bottom: 2px solid black;
+	
+	button:active {
+		position:relative;
+		top:1px;
 	}
-	</style>
+	
+	button:focus {
+		outline: none;
+	}
+</style>
 </head>
 <body>
 <script>
+window.onload = function(e) { 
+	document.getElementById("cardTitle").innerHTML="Trading Cards Demo";
+	document.getElementById("cardDescription").innerHTML="Click a button to activate a meme card!";
+	document.getElementById("cardImage").style.backgroundImage="url(Memes/320x300/00000.jpg)";
+}
+
 function select(id) {
 
 	if (id == "00001") {
@@ -135,35 +211,45 @@ function select(id) {
 	document.getElementById("cardImage").style.backgroundImage=imageSource;
 
 }
-
 </script>
-	<div class="whatTheFuck">
-		<h1>Trading Cards Demo</h1>
-	</div>
-	<div id="cardContainer">
-		<div class="cardHeader">
-			<h1 id="cardTitle"></h1>
+
+	<div class="card">
+		<div class="cardContainer">
+			<div class="cardFront">
+				<div class="cardHeader">
+					<h1 id="cardTitle"></h1>
+				</div>
+				<div id="cardImage">
+				</div>
+				<div class="cardDescriptionContainer">
+					<p id="cardDescription"></p>
+				</div>
+			</div>
+			<div class="cardBack"></div>
 		</div>
-		<div id="cardImage">
+	</div>
+	
+	<div class="info">
+	
+		<div id="linksContainer">
+			<button onClick="select('00001')">Boar Vessel</button>
+			<button onClick="select('00002')">Ugandan Knuckles</button>
+			<button onClick="select('00003')">PewDiePie's Chair</button>
+			<button onClick="select('00004')">Edgar</button>
 		</div>
-		<div class="cardDescriptionContainer">
-			<p id="cardDescription"></p>
+		
+		<div class="whatTheFuck">
+			<p>This demo shows how to dynamically load different memes into the trading card's template. 
+			Click on the buttons above to see how it works!<br><br>
+			Eventually these are going to be deployed on the Ethereum blockchain as ERC721 tokens which means 
+			that the cards can be <strong>owned</strong> and there will be a <strong>limited amount</strong> of 
+			each card in existence.<br><br>
+			I have absolutely nothing better to do with my life... so if you're like me, check out the
+			<a href="https://github.com/BroFistIO/Trading-Cards" target="_blank">source code</a> and talk to the rest 
+			of the team in our <a href="https://discord.gg/qufg63c"target="_blank">Discord</a></p>
 		</div>
+	
 	</div>
-	<div id="linksContainer">
-		<button onClick="select('00001')">Boar Vessel</button>
-		<button onClick="select('00002')">Ugandan Knuckles</button>
-		<button onClick="select('00003')">PewDiePie's Chair</button>
-		<button onClick="select('00004')">Edgar</button>
-	</div>
-	<div class="whatTheFuck">
-		<p>This demo shows how to dynamically load different memes into the trading card's template. 
-		Click on the buttons above to see how it works!<br><br>
-		Eventually these are going to be actual OWNABLE trading cards with LIMITED supply on the Ethereum blockchain as 
-		ERC721 tokens.<br><br>
-		I have absolutely nothing better to do with my life... so if you're like me, check out the
-		<a href="https://github.com/BroFistIO/Trading-Cards" target="_blank">source code</a> and talk to the rest 
-		of the team in our <a href="https://discord.gg/qufg63c"target="_blank">Discord</a></p>
-	</div>
+	
 </body>
 </html>

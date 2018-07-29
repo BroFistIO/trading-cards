@@ -16,6 +16,7 @@
 		background-repeat: no-repeat;
 		background-position: top left;
 		position: relative;
+		margin: 0 auto;
 	}
 	.cardHeader {
 		width: 320px; 
@@ -28,7 +29,7 @@
 		right: 0;
 		bottom: 0;
 	}
-	.cardTitle {
+	#cardTitle {
 		color: white;
 		text-shadow: 2px 2px black;
 		letter-spacing: 2px;
@@ -41,8 +42,7 @@
 		bottom: 0;
 		margin: auto;
 	}
-	.cardImage {
-		background-image: url(Memes/320x300/00001.jpg);
+	#cardImage {
 		background-repeat: no-repeat;
 		background-position: top left;
 		width: 320px;
@@ -56,7 +56,7 @@
 		bottom: 0;
 		z-index: -1;
 	}
-	.cardDescription {
+	.cardDescriptionContainer {
 		width: 320px; 
 		height: 80px;
 		margin: 0 auto;
@@ -67,24 +67,75 @@
 		right: 0;
 		bottom: 0;
 	}
-	.cardDescription p {
+	.cardDescriptionContainer p {
 		font-size: 18px; 
 		letter-spacing: 1px;
 		color: white;
 		padding-right: 110px;
 	}
+	#linksContainer {
+	margin-top: 5px;
+		text-align: center;
+	}
+	#linksContainer a {
+		color: black;
+		text-decoration: none;
+	}
+	#linksContainer a:hover {
+		border-bottom: 2px solid black;
+	}
 	</style>
 </head>
 <body>
+<script>
+function select(id) {
+
+	if (id == "00001") {
+		cardTitle = "Boar Vessel";
+		cardDescription = "600-500 BC, Etruscan, ceramic!";
+		imageSource = "url(Memes/320x300/00001.jpg)";
+	}
+	
+	else if (id == "00002") {
+		cardTitle = "Ugandan Knuckles";
+		cardDescription = "Probably doesn't know the way";
+		imageSource = "url(Memes/320x300/00002.jpg)";
+	}
+	
+	else if (id == "00003") {
+		cardTitle = "PewDiePie's Chair";
+		cardDescription = "It's only 399!";
+		imageSource = "url(Memes/320x300/00003.jpg)";
+	}
+	
+	else if (id == "00004") {
+		cardTitle = "Edgar";
+		cardDescription = "The legendary pug who wears diapers";
+		imageSource = "url(Memes/320x300/00004.jpg)";
+	}
+	
+	document.getElementById("cardTitle").innerHTML=cardTitle;
+	document.getElementById("cardDescription").innerHTML=cardDescription;
+	document.getElementById("cardImage").style.backgroundImage=imageSource;
+
+}
+
+</script>
 	<div id="cardContainer">
 		<div class="cardHeader">
-			<h1 class="cardTitle">Boar Vessel</h1>
+			<h1 id="cardTitle"></h1>
 		</div>
-		<div class="cardImage">
+		<div id="cardImage">
 		</div>
-		<div class="cardDescription">
-			<p>600-500 BC, Etruscan, ceramic!</p>
+		<div class="cardDescriptionContainer">
+			<p id="cardDescription"></p>
 		</div>
+	</div>
+	<div id="linksContainer">
+		<button onClick="select('00001')">Boar Vessel</button>
+		<button onClick="select('00002')">Ugandan Knuckles</button>
+		<button onClick="select('00003')">PewDiePie's Chair</button>
+		<button onClick="select('00004')">Edgar</button>
 	</div>
 </body>
 </html>

@@ -114,12 +114,6 @@
 		padding: 5px;
 	}
 
-	
-	/*	
-	Thank you: 
-	https://codepen.io/edeesims/pen/iGDzk 
-	https://davidwalsh.name/css-flip 
-	*/
 	.card {
 		width: 400px;
 		height: 540px;
@@ -132,12 +126,7 @@
 		transition: transform 1s;
 		transform-style: preserve-3d;
 	}
-	
-	.card:hover .cardContainer {
-		transform: rotateY( 180deg ) ;
-		transition: transform 0.5s;
-	}
-	
+
 	.cardFront,
 	.cardBack {
 		position: absolute;
@@ -173,10 +162,12 @@
 </head>
 <body>
 <script>
-window.onload = function(e) { 
+window.onload = function(e) {
+
 	document.getElementById("cardTitle").innerHTML="Trading Cards Demo";
 	document.getElementById("cardDescription").innerHTML="Click a button to activate a meme card!";
 	document.getElementById("cardImage").style.backgroundImage="url(Memes/320x300/00000.jpg)";
+
 }
 
 function select(id) {
@@ -187,11 +178,13 @@ function select(id) {
 		imageSource = "url(Memes/320x300/00001.jpg)";
 	}
 	
+	
 	else if (id == "00002") {
 		cardTitle = "Ugandan Knuckles";
 		cardDescription = "Probably doesn't know the way";
 		imageSource = "url(Memes/320x300/00002.jpg)";
 	}
+	
 	
 	else if (id == "00003") {
 		cardTitle = "PewDiePie's Chair";
@@ -199,27 +192,43 @@ function select(id) {
 		imageSource = "url(Memes/320x300/00003.jpg)";
 	}
 	
+	
 	else if (id == "00004") {
 		cardTitle = "Edgar";
 		cardDescription = "The legendary pug who wears diapers";
 		imageSource = "url(Memes/320x300/00004.jpg)";
 	}
 	
-	document.getElementById("cardTitle").innerHTML=cardTitle;
-	document.getElementById("cardDescription").innerHTML=cardDescription;
-	document.getElementById("cardImage").style.backgroundImage=imageSource;
+	
+	window.setTimeout(function() {
 
+		document.getElementById("cardTitle").innerHTML=cardTitle;
+		document.getElementById("cardDescription").innerHTML=cardDescription;
+		document.getElementById("cardImage").style.backgroundImage=imageSource;
+
+	}, 1000);
+
+}
+
+
+function flip() {
+
+	document.getElementById("cardContainer").style.transform = "rotateY(180deg)";
+	
+	window.setTimeout(function() { 
+		document.getElementById("cardContainer").style.transform = "none"; 
+	}, 1000);
+	
 }
 </script>
 
 	<div class="card">
-		<div class="cardContainer">
+		<div id="cardContainer" class="cardContainer">
 			<div class="cardFront">
 				<div class="cardHeader">
 					<h1 id="cardTitle"></h1>
 				</div>
-				<div id="cardImage">
-				</div>
+				<div id="cardImage"></div>
 				<div class="cardDescriptionContainer">
 					<p id="cardDescription"></p>
 				</div>
@@ -231,10 +240,10 @@ function select(id) {
 	<div class="info">
 	
 		<div id="linksContainer">
-			<button onClick="select('00001')">Boar Vessel</button>
-			<button onClick="select('00002')">Ugandan Knuckles</button>
-			<button onClick="select('00003')">PewDiePie's Chair</button>
-			<button onClick="select('00004')">Edgar</button>
+			<button onClick="select('00001'); flip()">Boar Vessel</button>
+			<button onClick="select('00002'); flip()">Ugandan Knuckles</button>
+			<button onClick="select('00003'); flip()">PewDiePie's Chair</button>
+			<button onClick="select('00004'); flip()">Edgar</button>
 		</div>
 		
 		<div class="whatTheFuck">

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Trading Cards Demo</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+	@font-face {
+		font-family: myFont;
+		src: url(font.woff);
+	}
+
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+	
+	.card {
+		perspective: 2000px;
+		padding-bottom: 135%;
+	}
+	
+	.cardContainer {
+		position: relative;
+		transition: transform 1s;
+		transform-style: preserve-3d;
+	}
+
+	.cardFront,
+	.cardBack { 
+		position: absolute;
+		width: 100%;
+	}
+	
+	.cardFront,
+	.cardBack {
+		font-family: myFont;
+		backface-visibility: hidden;
+	}
+	
+	.cardBack {
+		transform: rotateY( 180deg );
+	}
+	
+	.cardFront img,
+	.cardBack img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -1
+	}
+	
+	.cardHeader {
+		position: relative;
+		width: 80%; margin: 0 auto;
+		padding-bottom: 33.75%;
+	}
+	
+		#cardTitle {
+			white-space: nowrap;
+			color: white;
+			text-shadow: 2px 2px black;
+			letter-spacing: 2px;
+			position: absolute;
+			top: 43%;
+			left: 0;
+			right: 0;
+			text-align: center;
+			margin: 0 auto;
+			font-size: 10vw;
+		}
+	
+	#cardImageContainer {
+		position: relative;
+		width: 80%;
+		padding-bottom: 75%;
+		margin: 0 auto;
+	}
+	
+	#cardImageContainer img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: -2
+	}
+	
+	.cardDescriptionContainer {
+		position: relative;
+		width: 100%;
+		padding-bottom: 26.25%;
+	}
+	
+	.cardDescriptionContainer p {
+		position: absolute;
+		top: 25%;
+		left: 4%;
+		margin: 0;
+		font-size: 6vw;
+		color: white;
+		padding-right: 30%;
+	}
+
+	#linksContainer {
+		text-align: center;
+	}
+
+	button {
+		background-color: purple;
+		border: 0;
+		cursor: pointer;
+		color: white;
+		font-family: Arial;
+		font-size: 12px;
+		font-weight: bold;
+		padding: 7px 7px;
+		text-decoration: none;
+	}
+	
+	button:active {
+		position:relative;
+		top:1px;
+	}
+	
+	button:focus {
+		outline: none;
+	}
+</style>
+</head>
+<body>
+<script>
+window.onload = function(e) {
+
+	cardTitle = "Trading Cards";
+	cardDescription = "Click a button to activate a meme card!";
+	imageSource = "Memes/320x300/00000.jpg";
+
+	document.getElementById("cardTitle").innerHTML=cardTitle;
+	document.getElementById("cardDescription").innerHTML=cardDescription;
+	document.getElementById("cardImage").src=imageSource;
+
+}
+
+function select(id) {
+
+	if (id == "00001") {
+		cardTitle = "Boar Vessel";
+		cardDescription = "600-500 BC, Etruscan, ceramic!";
+		imageSource = "Memes/320x300/00001.jpg";
+	}
+	
+	
+	else if (id == "00002") {
+		cardTitle = "Ugandan Knuckles";
+		cardDescription = "Probably doesn't know the way";
+		imageSource = "Memes/320x300/00002.jpg";
+	}
+	
+	
+	else if (id == "00003") {
+		cardTitle = "PewDiePie's Chair";
+		cardDescription = "It's only 399!";
+		imageSource = "Memes/320x300/00003.jpg";
+	}
+	
+	
+	else if (id == "00004") {
+		cardTitle = "Edgar";
+		cardDescription = "The legendary pug who wears diapers";
+		imageSource = "Memes/320x300/00004.jpg";
+	}
+	
+	
+	window.setTimeout(function() {
+
+		document.getElementById("cardTitle").innerHTML=cardTitle;
+		document.getElementById("cardDescription").innerHTML=cardDescription;
+		document.getElementById("cardImage").src=imageSource;
+
+	}, 1000);
+
+}
+
+
+function flip() {
+
+	document.getElementById("cardContainer").style.transform = "rotateY(180deg)";
+	
+	window.setTimeout(function() { 
+		document.getElementById("cardContainer").style.transform = "none"; 
+	}, 1000);
+	
+}
+</script>
+
+	<div class="card">
+		<div id="cardContainer" class="cardContainer">
+			<div class="cardFront">
+				<img src="Cards/Card-Front-Transparency.png"/>
+				<div class="cardHeader">
+					<h1 id="cardTitle">Boar Vessel</h1>
+				</div>
+				<div id="cardImageContainer">
+					<img id="cardImage" src="" alt=""/>
+				</div>
+				<div class="cardDescriptionContainer"><p id="cardDescription"></p></div>
+			</div>
+			<div class="cardBack">
+				<img src="Cards/Card-Back.jpg"/>
+			</div>
+		</div>
+	</div>
+
+	<div id="linksContainer">
+		<button onClick="select('00001'); flip()">Boar Vessel</button>
+		<button onClick="select('00002'); flip()">Ugandan Knuckles</button>
+		<button onClick="select('00003'); flip()">PewDiePie's Chair</button>
+		<button onClick="select('00004'); flip()">Edgar</button>
+	</div>
+
+</body>
+</html>

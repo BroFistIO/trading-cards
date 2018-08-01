@@ -1,4 +1,4 @@
 # Trading Cards
-PewDiePie and Memes related trading cards that will eventually be deployed on the Ethereum blockchain
+PewDiePie and Memes related trading cards that will eventually be deployed on the Ethereum blockchain.
 
-[demo](https://brofistcoin.io/trading-cards/) here
+Check out the demo [here](https://brofistcoin.io/trading-cards/) and "sort of" experimental fluid demo [here](https://brofistcoin.io/trading-cards/fluid.html)

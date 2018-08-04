@@ -13,3 +13,8 @@ Once all that is done the final step will be to develop a peer-to-peer game simi
 
 ## Help out
 As of today I have absolutely no idea how to put all of this together so I would really, really appreciate the help from someone who knows a thing or two about networking, solidity and smart contracts. I can pay you 10 Brofistcoin per hour ;)
+
+## Current stage of development
+So I have been looking into the whole peer-to-peer connection thing and my mind is completely blown. There's a thing called WebRTC and it's not even that new any more. Again I have been living under a rock somewhere...
+
+Also I found a JavaScript library for it called peerJS which makes everything so much easier. I have been playing around with it for a few days now and I am trying to connect peerJS with the open source triple triad card game in a way which allows me to play against myself (for the time being).
